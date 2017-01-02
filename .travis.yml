@@ -81,6 +81,7 @@ script:
   - export SIMPLETEST_BASE_URL=http://localhost:8888
   - ./vendor/bin/phpunit -c core --group conditional_fields --verbose --debug | tee ; export TEST_PHPUNIT=${PIPESTATUS[0]} ; echo $TEST_PHPUNIT
   - php core/scripts/run-tests.sh --verbose --color --non-html --concurrency 8 --php `which php` --url http://localhost:8888 --directory modules --types Simpletest | tee /tmp/test.txt | grep passes; export TEST_EXIT=${PIPESTATUS[0]} ; echo $TEST_EXIT
+  #- ./vendor/bin/phpunit -c core --group search_api --testsuite functional --verbose | tee ; export TEST_PHPUNIT=${PIPESTATUS[0]} ; echo $TEST_PHPUNIT
   - cd $TRAVIS_BUILD_DIR/../drupal
   # Re-enable when trying to get CodeSniffer doesn't return a 403 anymore.
   #- /home/travis/.composer/vendor/bin/phpcs --standard=/home/travis/.composer/vendor/drupal/coder/coder_sniffer/Drupal --extensions=php,inc,test,module,install --ignore=css/ $TRAVIS_BUILD_DIR/../drupal/modules/conditional_fields
