@@ -84,10 +84,7 @@ script:
   # Execute tests via phpunit.
   - ./vendor/bin/phpunit -c core --group conditional_fields --verbose --debug | tee ; export TEST_PHPUNIT=${PIPESTATUS[0]} ; echo $TEST_PHPUNIT
   # Execute tests - Alternative way.
-  - php core/scripts/run-tests.sh --verbose --color --non-html --concurrency 8 --php `which php` --url http://localhost:8888 --directory modules/contrib/
-  
-  
-  | tee /tmp/test.txt | grep passes; export TEST_EXIT=${PIPESTATUS[0]} ; echo $TEST_EXIT
+  - php core/scripts/run-tests.sh --verbose --color --non-html --concurrency 8 --php `which php` --url http://localhost:8888 --directory modules/contrib/conditional_fields | tee /tmp/test.txt | grep passes; export TEST_EXIT=${PIPESTATUS[0]} ; echo $TEST_EXIT
   #- ./vendor/bin/phpunit -c core --group search_api --testsuite functional --verbose | tee ; export TEST_PHPUNIT=${PIPESTATUS[0]} ; echo $TEST_PHPUNIT
   - cd $TRAVIS_BUILD_DIR/../drupal
   # Re-enable when trying to get CodeSniffer doesn't return a 403 anymore.
